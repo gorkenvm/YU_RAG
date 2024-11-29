@@ -35,6 +35,8 @@ Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyi
     OPENAI_API_KEY="your_openai_api_key"
     ```
 
+NOTE : GEMINI_API_KEY'i yazmak yeterli olacaktır.
+
 4. **Uygulamayı Başlatın:**
     `YU_app.py` dosyasını çalıştırarak Streamlit uygulamasını başlatın:
     ```sh
