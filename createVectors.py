@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]  = os.getenv("GEMINI_API_KEY")
-PINECONE_API_KEY = os.environ["PINECONE_API_KEY"]  = os.getenv("GEMINI_API_KEY")
 
 # Load the data
 with open(r'data\duyurular_aiicerik.json', 'r', encoding='utf-8') as file:

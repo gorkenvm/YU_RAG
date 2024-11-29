@@ -2,8 +2,9 @@ from openai import OpenAI
 import httpx
 import pandas as pd
 import logging
+import os
 
-
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 httpx_client = httpx.Client(verify=False)
 
@@ -32,11 +33,11 @@ Yaşar Üniversitesi web sitesindeki duyuruların başlık ve içeriklerini web 
 
 #             "content": "Merhaba, lütfen aşağıdaki isteği okuyarak en özet halini çıkartın. Özet, kişisel bilgiler, telefon numarası ve adres içermemelidir. Ayrıca gereğinin yapılmasını arz ediyorum gibi anlama katkıda bulunmayan cümlelerinde çıkarılmasını istiyorum.\n\nİstek: {İSTEK_METNİ}\n\nÖzet:\n[İSTEĞİN_EN_ÖZET_HALİ]",
 
-    def __init__(self, model="gpt-4o", max_token=8000, top_p=0.1): # text-davinci-003 gpt-4o-mini
+    def __init__(self, model="gpt-4o", max_token=8000, top_p=0.1, api_key=OPENAI_API_KEY): # text-davinci-003 gpt-4o-mini
         self.model = model
         self.max_token = max_token
         self.top_p = top_p
-        self.client = OpenAI(http_client=httpx_client)
+        self.client = OpenAI(http_client=httpx_client, api_key=OPENAI_API_KEY)
 
         # Loglama ayarlarını yapılandır ve tamponlama kullanma
         self.setup_logging()

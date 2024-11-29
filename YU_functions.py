@@ -14,9 +14,9 @@ import time
 load_dotenv()
 
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]  = os.getenv("GEMINI_API_KEY")
-PINECONE_API_KEY = os.environ["PINECONE_API_KEY"]  = os.getenv("GEMINI_API_KEY")
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
-
+# Duyuruları çekmek için kullanılacak URL
 def fetch_announcements(url):
     """Bir URL'den duyuruları çeker ve JSON formatında döndürür."""
     response = requests.get(url)
@@ -69,12 +69,14 @@ def fetch_announcements(url):
     
     return duyurular
 
+# JSON formatında verileri dosyaya kaydetmek için kullanılacak fonksiyon
 def export_to_json(data, filename):
     """Verilen verileri belirtilen dosya adına JSON formatında kaydeder."""
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     print(f"Veriler {filename} dosyasına kaydedildi.")
 
+# JSON formatında verileri dosyadan yüklemek için kullanılacak fonksiyon
 def fetch_content(announcements):
     """Her bir duyurunun linkine giderek içerik bilgisini çeker ve yapıya ekler."""
     for announcement in announcements:
@@ -96,7 +98,7 @@ def fetch_content(announcements):
     return announcements
 
 
-
+# AI yardımıyla duyuruların içeriğini işleyen fonksiyon
 def process_announcements_with_ai(announcements):
     """Duyuruların içeriğini AI yardımıyla işleyip 'aiicerik' anahtarını ekler."""
     ai_tool = OpenAISearchTool()
@@ -126,7 +128,7 @@ def GEMINI_embeddings(text, api_key = GEMINI_API_KEY):
                                     task_type="retrieval_document")
     return embedding['embedding']
 
-
+# This function takes a text and a tech argument and returns the embeddings of the text
 def get_embeddings(text, tech):
     if tech == "GEMINI":
         return GEMINI_embeddings(text)
@@ -136,12 +138,11 @@ def get_embeddings(text, tech):
     else:
         raise ValueError("Invalid tech argument. Please use 'GEMINI' or 'GPT'.")
 
-
-
-
+# This function takes a query and a list of data and returns the most similar item in the data
 def get_query_embedding(query,tech = 'GPT'):
     return get_embeddings(query,tech=tech)
 
+# This function takes a query embedding and a list of data and returns the most similar item in the data
 def find_most_similar(query_embedding, data):
     min_distance = float('inf')
     best_match = None
@@ -154,8 +155,7 @@ def find_most_similar(query_embedding, data):
     
     return best_match
 
-
-
+# This function takes a query and a list of data and returns the most similar item in the data
 def respond_to_query(data, query,tech = 'GPT'):
     query_embedding = get_query_embedding(query,tech)
     best_match = find_most_similar(query_embedding, data)
@@ -169,7 +169,7 @@ def respond_to_query(data, query,tech = 'GPT'):
 
     return response,link, tarih
 
-
+# This function takes a query and a list of data and returns the most similar item in the data
 def chatbot(query,relevant_info,link,tarih):
     genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
@@ -210,7 +210,6 @@ def chatbot(query,relevant_info,link,tarih):
         
     return response_with_link,chat_session
 
-
 # history için önerilen yapı
 def extract_qna_roles(chat_session, history_list):
     
@@ -239,7 +238,7 @@ def extract_qna_roles(chat_session, history_list):
     return history_list
 
 
-
+# This function takes a query and a list of data and returns the most similar item in the data
 def execute_query(query, data, history_list):
 
     # if query has merhaba and len(query) < 17  kodunu yaz.
