@@ -59,15 +59,15 @@ Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` d
 
 
 
-
 ## 📊 RAG Pipeline
 
 The architecture of the project is illustrated below:
 
 ```mermaid
 flowchart TD
-    A[University Website] -->|Scraping| B[Scrape Duyurular.py]
-    B -->|Processed Data| C[Create Vectors.py]
+    A[University Website] -->|Scraping| B[Scrape Duyurular]
+    B -->|Processed Data| C[Create Vectors]
     C -->|Embeddings| D[(Vector Database)]
-    D -->|Semantic Search| E[Chatbot (functions.py)]
-    E -->|Response| F[Streamlit UI (app.py)]
+    D -->|Semantic Search| E[Chatbot Functions]
+    E -->|Response| F[Streamlit App]
+
