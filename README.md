@@ -93,7 +93,9 @@ Embeddings & Semantic Search: Retrieves the most relevant answers using text emb
 
 Streamlit UI: Provides a user-friendly web interface for easy interaction.
 
-🛠️ Project Structure
+## 🛠️ Project Structure
+
+```bash
 YU_RAG/
 │── data/                     → Data files
 │── images/                   → Screenshots & diagrams for documentation
@@ -107,7 +109,7 @@ YU_RAG/
 │── requirements.txt          → Dependencies
 │── README.md                 → Project documentation
 │── LICENSE                   → License file
-
+```
 
 🚀 Installation
 
