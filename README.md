@@ -50,44 +50,28 @@ YU_RAG/
 │── LICENSE                   → License file
 ```
 
-🚀 Installation
+## 🚀 Installation
 
 Follow the steps below to run the project locally:
 
-Clone the repository
-
+### 1. Clone the repository
+```bash
 git clone https://github.com/gorkenvm/YU_RAG.git
 cd YU_RAG
+```
 
-
-Install dependencies
-
+### 2. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-
-Set API Keys
-Create a .env file inside the env/ folder and add your API keys:
-
+### 3. Set API Keys
+```bash
 GEMINI_API_KEY="your_gemini_api_key"
 OPENAI_API_KEY="your_openai_api_key"
+```
 
-
-💡 Note: Providing only GEMINI_API_KEY is sufficient.
-
-Run the application
-
+### 3. Run the application
+```bash
 streamlit run src/app.py
-
-📖 Usage
-
-Home Page: Interact with the chatbot and ask questions.
-
-Announcements: View university announcements with detailed information.
-
-RAG Architecture: Learn more about how the RAG model works.
-
-🤝 Contributing
-
-Contributions are welcome!
-Please fork the repository and submit a pull request, or open an issue if you encounter a problem.
-
+```
