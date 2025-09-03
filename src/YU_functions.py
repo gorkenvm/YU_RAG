@@ -2,7 +2,7 @@ import re
 import json
 from bs4 import BeautifulSoup
 import requests
-from openai_tool import OpenAISearchTool 
+from src.openai_tool import OpenAISearchTool 
 import google.generativeai as genai
 import json
 import os 
